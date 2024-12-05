@@ -25,8 +25,6 @@ public class Address {
     @JsonBackReference
     private User user; //defines the link between the address and the users
 
-
-
     //Getter and setter functions
     public Long getId() {
         return id;
