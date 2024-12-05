@@ -5,8 +5,11 @@ import org.springframework.stereotype.Service;
 import com.example.demo.entity.User;
 import java.util.Optional;
 import java.util.List;
+
 import com.example.demo.repository.UserRepository;
 
+
+//provides all the basic operations to be performed on data (Business Logic)
 @Service
 public class UserService {
     @Autowired
@@ -23,7 +26,6 @@ public class UserService {
     public Optional<User> getUserById(Long id) {
         return userRepository.findById(id);
     }
-
 
     public User updateUser(Long id, User userDetails) {
         User user = userRepository.findById(id).orElseThrow();

@@ -4,9 +4,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 
 
-//Entity class to define the db
+//Entity class to define the db or define the row in the table
 @Entity
 public class User {
     @Id
@@ -14,6 +20,11 @@ public class User {
     private Long id;
     private String name;
     private String email;
+
+    // One user can have many addresses
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Address> addresses;
 
     //Getter and Setter functions
     public Long getId() {
@@ -38,6 +49,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    } 
+    }
 
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
 }

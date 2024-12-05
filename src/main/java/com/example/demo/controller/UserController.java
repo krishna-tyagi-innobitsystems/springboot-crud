@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
+
+
+// Handles all the HTTp requests and calls the services
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
 
-    @Autowired
+    @Autowired // attaches all the required dependency
     private UserService userService;
 
     @GetMapping
