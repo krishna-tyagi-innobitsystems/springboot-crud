@@ -35,6 +35,9 @@ public class AddressService {
             return user.get().getAddresses();
         }
         throw new RuntimeException("User not found");
+    }
 
+    public User getUserFromAddress(Long id) {
+        return addressRepository.findById(id).get().getUser();
     }
 }
